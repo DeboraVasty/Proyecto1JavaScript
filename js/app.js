@@ -14,7 +14,8 @@ function cargarEventListeners(){
 
     //Eliminar cursos del carrito
     carrito.addEventListener('click', eliminarCurso);
-
+    carrito.addEventListener('click',sumarCurso);
+    carrito.addEventListener('click',restarCurso);
 
     //vaciar carrito
     vaciarCarritoBtn.addEventListener('click',()=>{
@@ -48,36 +49,49 @@ function eliminarCurso(e){
 }
 
 //sumar Curso
-/*function sumarCurso(e){
-   if(e.target.classList.contains('sumarCurso')){
-        const cursoId=e.target.getAttribute('data-id');
-      
-      const aumenta=articulosCarrito.map(curso=>{
-            if(curso.id === cursoId){
-                curso.cantidad++;
-                console.log(curso.cantidad);
-                return curso;
-            }});
-            articulosCarrito=[...aumenta];
-    }
+function sumarCurso(e){
+
+    const curs=articulosCarrito.map(
+        cursoMap=>{
+            if(e.target.classList.contains('sumarCurso')){
+                const cursoId=e.target.getAttribute('data-id');
+              if(cursoMap.id === cursoId){
+                cursoMap.cantidad++;
+              }
+              
+              
+            }
+        }
+    )
+    carritoHTML();
+  
     
 }
 
 //restar Curso
 function restarCurso(e){
-    if(e.target.classList.contains('sumarCurso')){
-         const cursoId=e.target.getAttribute('data-id');
-       
-       const resta=articulosCarrito.map(curso=>{
-             if(curso.id === cursoId){
-                 curso.cantidad--;
-                 console.log(curso.cantidad);
-                 return curso;
-             }});
-             articulosCarrito=[...resta];
-     }
+    const curs=articulosCarrito.map(
+        cursoMap=>{
+            if(e.target.classList.contains('restarCurso')){
+                const cursoId=e.target.getAttribute('data-id');
+              if(cursoMap.id === cursoId){
+                  if(cursoMap.cantidad===1){
+                    articulosCarrito=articulosCarrito.filter(curso=>curso.id !== cursoId);
+                    carritoHTML();
+                  }else{
+                    cursoMap.cantidad--;   
+                  }
+               
+              }
+              
+              
+            }
+        }
+    )
+    carritoHTML();
+  
      
- }*/
+ }
 
 
 
