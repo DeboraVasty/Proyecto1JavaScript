@@ -1,3 +1,4 @@
+//Débora Chacach
 //variables
 const carrito=document.querySelector('#carrito');
 
